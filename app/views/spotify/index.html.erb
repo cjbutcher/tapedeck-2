@@ -1,0 +1,13 @@
+<%= form_for :spotify, url: search_spotify_index_path, remote: true do |f| %>
+  <%= f.text_field :query %>
+  <%= f.submit %>
+<% end %>
+
+<div id='results'>
+</div>
+
+<div id='jplayer1'>
+</div>
+
+<div id='jplayer2'>
+</div>

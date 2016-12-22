@@ -1,0 +1,9 @@
+<% if @albums.any? %>
+  <% @albums.each do |album| %>
+    <%= link_to play_tape_path(album.id), remote: true do %>
+      <%= render 'tapes/album', album: album %>
+    <% end %>
+  <% end %>
+<% else %>
+  None found!
+<% end %>
