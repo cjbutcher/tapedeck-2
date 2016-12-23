@@ -8,6 +8,9 @@ gem 'jquery-rails', '~> 4.2.1'
 gem 'turbolinks', '~> 5.0.0'
 gem 'rspotify', '~> 1.19.0'
 gem 'rails-assets-jplayer', source: 'https://rails-assets.org'
+gem 'sass-rails', '~> 5.0.6'
+gem 'bootstrap', '~> 4.0.0.alpha5'
+gem 'font-awesome-rails', '~> 4.7.0.1'
 
 group :development do
   gem 'listen', '~> 3.0.5'

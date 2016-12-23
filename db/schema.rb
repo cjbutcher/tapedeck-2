@@ -10,11 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161222112036) do
+ActiveRecord::Schema.define(version: 20161222190621) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "hstore"
+
+  create_table "albums", force: :cascade do |t|
+    t.integer  "collection_id"
+    t.string   "spotify_id"
+    t.string   "artist"
+    t.string   "name"
+    t.integer  "year"
+    t.string   "art"
+    t.integer  "position"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.index ["collection_id"], name: "index_albums_on_collection_id", using: :btree
+  end
 
   create_table "collections", force: :cascade do |t|
     t.string   "title"

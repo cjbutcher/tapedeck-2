@@ -16,10 +16,10 @@ var end = function() {
 };
 
 var updatePlayer = function() {
-  $('#player_song').html(album_data["tracks"]["track_names"][trackNo] + "");
-  $('#player_artist').html(album_data["tracks"]["track_artists"][trackNo] + "");
-  $('#player_album').html(album_data["album_name"] + "");
-  $('#player_cover').css("background-image", "url(" + album_data["album_art"] + ")");
+  $('#player_song').text(album_data["tracks"]["track_names"][trackNo]);
+  $('#player_artist').text(album_data["tracks"]["track_artists"][trackNo]);
+  $('#player_album').text(album_data["album_name"]);
+  //$('#player_cover').css("background-image", "url(" + album_data["album_art"] + ")");
 };
 
 var skipForwards = function() {

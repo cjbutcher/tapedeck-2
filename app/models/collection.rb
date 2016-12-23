@@ -1,4 +1,3 @@
 class Collection < ApplicationRecord
-  has_many :sections
-
+  has_many :albums
 end

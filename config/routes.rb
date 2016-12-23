@@ -6,12 +6,18 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :tapes, only: [] do
-    member do
-      get :play
+  resources :albums, only: [] do
+    collection do
+      get '/:spotify_id/play', to: 'albums#play', as: 'play'
     end
   end
 
-  root to: 'spotify#index'
+  resources :collections, only: [:show, :create] do
+    resources :albums, only: [:create]
+  end
+
+  resources :welcome, only: [:index]
+
+  root to: 'welcome#index'
 
 end

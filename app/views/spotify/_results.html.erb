@@ -1,9 +1,14 @@
-<% if @albums.any? %>
-  <% @albums.each do |album| %>
-    <%= link_to play_tape_path(album.id), remote: true do %>
-      <%= render 'tapes/album', album: album %>
+<div class='container'>
+  <% if @albums.any? %>
+    <% @albums.each do |album| %>
+      <div class='nopadding col-xs-3'>
+        <%= link_to play_albums_path(album.spotify_id), remote: true do %>
+          <img class="album img-thumbnail" src=<%= album.art %>>
+        <% end %>
+        <%= link_to 'Add', collection_albums_path(@collection, spotify_id: album.spotify_id), method: :post, remote: true %>
+      </div>
     <% end %>
+  <% else %>
+    None found!
   <% end %>
-<% else %>
-  None found!
-<% end %>
+</div>
