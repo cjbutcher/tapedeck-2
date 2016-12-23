@@ -13,13 +13,15 @@ $(".previous_button").off().on('click', function () {
 
 var end = function() {
   $("#jplayer2, #jplayer1").jPlayer("clearMedia");
+  $('#player').removeClass('open-slider');
+  $('#menu-button').removeClass('rotate');
 };
 
 var updatePlayer = function() {
   $('#player_song').text(album_data["tracks"]["track_names"][trackNo]);
   $('#player_artist').text(album_data["tracks"]["track_artists"][trackNo]);
   $('#player_album').text(album_data["album_name"]);
-  //$('#player_cover').css("background-image", "url(" + album_data["album_art"] + ")");
+  $('#player_cover').css("background-image", "url(" + album_data["album_art"] + ")");
 };
 
 var skipForwards = function() {
@@ -84,6 +86,8 @@ var play = function() {
     $("#jplayer1").jPlayer("play");
   }
   nextTrack();
+  $('#player').addClass('open-slider');
+  $('#menu-button').addClass('rotate');
 };
 
 

@@ -1,6 +1,5 @@
 class AlbumsController < ApplicationController
 
-
   def play
     album = RSpotify::Album.find(params[:spotify_id])
     @album_data = get_album_data(album)
@@ -25,7 +24,8 @@ class AlbumsController < ApplicationController
       tracks: tracks,
       no_of_tracks: album.tracks.count,
       duration: 10000,
-      album_name: album.name
+      album_name: album.name,
+      album_art: album.images.first['url']
     }.to_json
   end
 

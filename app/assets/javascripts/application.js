@@ -16,3 +16,7 @@
 //= require turbolinks
 //= require jplayer
 //= require_tree .
+
+$(document).ready(function(){
+
+});

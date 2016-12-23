@@ -12,7 +12,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :collections, only: [:show, :create] do
+  resources :collections, only: [:show, :create, :update] do
     resources :albums, only: [:create]
   end
 

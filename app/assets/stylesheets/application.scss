@@ -14,20 +14,61 @@
 @import "bootstrap";
 @import "font-awesome";
 
-.album {
-  width: 100%;
-  height: auto;
-  margin-bottom: 20px;
+#menu-wrapper {
+  float: right;
 }
 
-.heading {
-  font-weight: bold;
+#menu-button {
+  padding: 0;
+  background-color: transparent;
+  border: none;
+}
+
+#menu {
+  padding: 0;
+  margin: 0;
+}
+
+.row-centered {
+  text-align:center;
+}
+
+.col-centered {
+  display: inline-block;
+  float: none;
+  text-align: left;
+}
+
+.album-wrapper {
+  margin: 0px 10px 30px 10px;
+  padding: 0px;
+}
+
+.album {
+  margin: 0 auto;
+  width: 100%;
+  height: auto;
+  padding: 0px;
+}
+
+.center-align {
   text-align: center;
-  margin-bottom: 60px;
+}
+
+.right-align {
+  text-align: right;
 }
 
 .clickable {
   cursor: pointer;
+}
+
+.bottom-margin-lg {
+  margin-bottom: 60px;
+}
+
+.top-margin-lg {
+  margin-top: 60px;
 }
 
 .order {
@@ -39,4 +80,77 @@
 .nopadding {
   padding: 0px !important;
   margin: 0px !important;
+}
+
+#player{
+  height: 70px;
+  width: 455px;
+  position: relative;
+  left: -455px;
+}
+
+.open-slider{
+  left:0px !important;
+}
+
+.slider{
+  -webkit-transition: all 600ms cubic-bezier(1, 0, 0, 1);
+  transition:         all 600ms cubic-bezier(1, 0, 0, 1);
+}
+
+#player_cover {
+  width: 70px;
+  height: 70px;
+  float: left;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+#player_info {
+  height: 70px;
+  width: 160px;
+  float: left;
+}
+
+#player_song, #player_artist, #player_album {
+  height: 22px;
+  width: 100%;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  border-bottom: 1px solid black;
+  font-size: 14px;
+  margin-left: 5px;
+}
+
+#player_controls {
+  width: 20px;
+  height: 70px;
+  float: left;
+  margin-left: 10px;
+}
+
+#stop_button, #previous_button, #next_button {
+  height: 20px;
+  width: 20px;
+}
+
+.navbar {
+  padding: 0px;
+  background-color: white;
+  box-shadow: 0 -5px 5px -5px #333;
+}
+
+.btn:focus, .btn:active {
+  outline: none !important;
+}
+
+.rotate {
+  animation: .6s rotateRight infinite linear;
+}
+
+@keyframes rotateRight {
+  0%{ transform:rotate(0deg); transform-origin:50% 50%; }
+  100%{ transform:rotate(360deg); }
 }

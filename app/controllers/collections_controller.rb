@@ -11,9 +11,15 @@ class CollectionsController < ApplicationController
     end
   end
 
+  def update
+    @collection = Collection.find(params[:id])
+    @collection.update_attributes(collection_params)
+    redirect_to collection_path(@collection)
+  end
+
   private
 
   def collection_params
-    params.require(:collection).permit(:title)
+    params.require(:collection).permit(:title, :ordered)
   end
 end
