@@ -18,5 +18,13 @@
 //= require_tree .
 
 $(document).ready(function(){
+  var prev = 0;
+  var $window = $(window);
+  var nav = $('.navbar-fixed-bottom');
 
+  $window.on('scroll', function(){
+    var scrollTop = $window.scrollTop();
+    nav.toggleClass('navbar-slideout', scrollTop > prev);
+    prev = scrollTop;
+  });
 });

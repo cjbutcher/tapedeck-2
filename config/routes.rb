@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  devise_for :users, controllers: { omniauth_callbacks: "callbacks" }
+
   resources :spotify, only: [:index] do
     collection do
       post :search
