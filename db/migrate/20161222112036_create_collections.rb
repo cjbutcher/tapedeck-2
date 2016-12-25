@@ -2,7 +2,7 @@ class CreateCollections < ActiveRecord::Migration[5.0]
   def change
     create_table :collections do |t|
       t.string :title
-      t.boolean :ordered, default: false
+      t.boolean :ordered, default: true
       t.timestamps
     end
     create_table :sections do |t|

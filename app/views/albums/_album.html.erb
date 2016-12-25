@@ -1,10 +1,14 @@
-<div class='album-wrapper col-centered col-xs-4 col-md-2'>
+<div class='album-wrapper col-centered col-xs-4 col-md-2' id="album_<%= album.id %>">
   <div class='album col-xs-12'>
     <% if collection.ordered? %>
-      <h3 class='order'><%= album.position %></h3>
+      <div class='order'>
+        <h3><%= album.position %></h3>
+      </div>
     <% end %>
     <%= link_to play_albums_path(album.spotify_id), remote: true do %>
-      <img class="album img-thumbnail" src=<%= album.art %>>
+      <div class='album-art'>
+        <img class="img-thumbnail" src=<%= album.art %>>
+      </div>
     <% end %>
   </div>
 </div>

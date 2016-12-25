@@ -1,0 +1,28 @@
+<script>
+  $("#collection").sortable({
+    items: ".album-wrapper",
+    handle: ".order",
+    opacity: 0.6,
+    update: function() {
+      sendOrderToServer();
+    }
+  });
+
+  function sendOrderToServer() {
+    var order = $("#collection").sortable("serialize");
+    var url = $("#collection").data("reorder-path");
+
+    $.ajax({
+      type: "POST",
+      dataType: "json",
+      url: url,
+      data: order,
+      success: function(response) {
+        $(".order").each(function(index, value) {
+          var new_position = (index + 1)
+          $(this).replaceWith("<div class='order'><h3>" + new_position + "</h3></div>");
+        });
+      }
+    });
+  }
+</script>

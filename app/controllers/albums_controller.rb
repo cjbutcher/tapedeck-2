@@ -6,7 +6,8 @@ class AlbumsController < ApplicationController
   end
 
   def create
-    @collection = Collection.find(params[:collection_id])
+    @collection = current_user.collections.find(params[:collection_id])
+    reject_request! unless @collection.user == current_user
     spotify_object = RSpotify::Album.find(params[:spotify_id])
     @album = @collection.albums.new(spotify_id: spotify_object.id, art: spotify_object.images.first['url'], name: spotify_object.name, artist: spotify_object.artists.first.name, position: (@collection.albums.count + 1))
     @album.save

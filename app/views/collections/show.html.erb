@@ -4,13 +4,19 @@
     <h1 class='center-align'><%= @collection.title %></h1>
   </div>
   <div class="col-xs-1">
-    <%= render 'collections/add_model' %>
+    <%= render 'collections/add_model' if user_signed_in? && current_user.can_edit_collection?(@collection) %>
   </div>
   <div class="col-xs-1">
-    <%= render 'collections/edit_model' %>
+    <%= render 'collections/edit_model' if user_signed_in? && current_user.can_edit_collection?(@collection) %>
   </div>
   <div class="col-xs-1"></div>
 </div>
-<div id='collection' class="row row-centered bottom-margin-lg">
+<div id='collection' class="row row-centered bottom-margin-lg" data-reorder-path="<%= collection_reorder_path(@collection) %>">
   <%= render @collection.albums.order('position'), collection: @collection %>
 </div>
+
+<% if user_signed_in? && current_user.can_edit_collection?(@collection) && @collection.ordered? %>
+  <div id='reorder-script'>
+    <%= render 'collections/reorder_script' %>
+  </div>
+<% end %>
