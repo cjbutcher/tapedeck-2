@@ -1,15 +1,20 @@
-$(".next_button").off().on('click', function () {
-  if(trackNo == album_data["no_of_tracks"]) {
+var initializePlayerControls = function() {
+  $(".stop_button").off().on('click', function () {
     end();
-  }
-  else {
-    skipForwards();
-  }
-});
+  });
 
-$(".previous_button").off().on('click', function () {
-  skipBackwards();
-});
+  $(".next_button").off().on('click', function () {
+    if(trackNo == maxTrackNo) {
+      end();
+    } else {
+      skipForwards();
+    }
+  });
+
+  $(".previous_button").off().on('click', function () {
+    skipBackwards();
+  });
+}
 
 var end = function() {
   $("#jplayer2, #jplayer1").jPlayer("clearMedia");
@@ -17,7 +22,7 @@ var end = function() {
   $('#menu-button').removeClass('rotate');
 };
 
-var updatePlayer = function() {
+var updatePlayerInfo = function() {
   $('#player_song').text(album_data["tracks"]["track_names"][trackNo]);
   $('#player_artist').text(album_data["tracks"]["track_artists"][trackNo]);
   $('#player_album').text(album_data["album_name"]);
@@ -25,77 +30,58 @@ var updatePlayer = function() {
 };
 
 var skipForwards = function() {
-  if (trackNo % 2 === 0) {
-    $("#jplayer2").jPlayer("setMedia", {
-      m4a: album_data["tracks"]["preview_urls"][trackNo]
-    });
-  }
-  else {
-    $("#jplayer1").jPlayer("setMedia", {
-      m4a: album_data["tracks"]["preview_urls"][trackNo]
-    });
-  }
+  loadMedia();
   play();
 };
 
 var skipBackwards = function() {
-    if (trackNo == 1) {
-      trackNo = trackNo - 1;
-    }
-    else {
-      trackNo = trackNo - 2; // because play function accelerates straight through to nextTrack which puts the track no up one, we have to go back two spaces, similarly, we don't have to put next track forward at all
-    }
-    if (trackNo % 2 === 0) {
-      $("#jplayer2").jPlayer("setMedia", {
-        m4a: album_data["tracks"]["preview_urls"][trackNo]
-      });
-    }
-    else {
-      $("#jplayer1").jPlayer("setMedia", {
-        m4a: album_data["tracks"]["preview_urls"][trackNo]
-      });
-    }
-    play();
+  if (trackNo == 1) {
+    trackNo -= 1;
+  } else {
+    trackNo -= 2;
+  }
+  loadMedia();
+  play();
 };
 
-var nextTrack = function() {
-  if (trackNo >= album_data["tracks"]["preview_urls"].length) {
+var prepareNextTrack = function() {
+  if (trackNo == maxTrackNo) {
     end();
+  } else {
+    trackNo += 1;
+    loadMedia();
   }
-  else {
-    updatePlayer();
-    trackNo = trackNo + 1;
-    if (trackNo % 2 === 0) {
-      $("#jplayer2").jPlayer("setMedia", {
-        m4a: album_data["tracks"]["preview_urls"][trackNo]
-      });
-    }
-    else {
-      $("#jplayer1").jPlayer("setMedia", {
-        m4a: album_data["tracks"]["preview_urls"][trackNo]
-      });
-    }
+};
+
+var currentPlayer = function() {
+  var player;
+  if (trackNo % 2 === 0) {
+    player = $("#jplayer2");
+  } else {
+    player = $("#jplayer1");
   }
+  return player;
 };
 
 var play = function() {
-  if (trackNo % 2 === 0) {
-    $("#jplayer2").jPlayer("play");
-  }
-  else {
-    $("#jplayer1").jPlayer("play");
-  }
-  nextTrack();
+  updatePlayerInfo();
   $('#player').addClass('open-slider');
   $('#menu-button').addClass('rotate');
+  currentPlayer().jPlayer("play");
+  prepareNextTrack();
 };
 
+var loadMedia = function() {
+  currentPlayer().jPlayer("setMedia", {
+    m4a: album_data["tracks"]["preview_urls"][trackNo]
+  });
+};
 
 //START HERE
 
 var album_data = <%= raw json_escape(@album_data) %>;
-
 var trackNo = 0;
+var maxTrackNo = album_data["tracks"]["preview_urls"].length
 
 $("#jplayer1, #jplayer2").jPlayer({
   timeupdate: function(event) {
@@ -107,12 +93,8 @@ $("#jplayer1, #jplayer2").jPlayer({
   supplied: "m4a"
 });
 
-$("#jplayer2").jPlayer("setMedia", {
-  m4a: album_data["tracks"]["preview_urls"][trackNo]
-});
+loadMedia();
+
+initializePlayerControls();
 
 play();
-
-$(".stop_button").off().on('click', function () {
-  end();
-});

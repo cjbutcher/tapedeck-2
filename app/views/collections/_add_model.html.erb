@@ -7,18 +7,17 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title">Add a tape</h4>
+        <h4 class="modal-title">Add a Tape</h4>
       </div>
       <div class="modal-body">
-
-        <%= form_for :spotify, url: search_spotify_index_path, remote: true do |f| %>
-          <%= f.label :query %>
-          <%= f.text_field :query %>
-          <%= f.hidden_field :collection_id, value: @collection.id %>
-          <div id='results'></div>
+        <div class='form-group'>
+          <%= form_for :spotify, url: search_spotify_path(@collection), remote: true, method: :get do |f| %>
+            <%= f.text_field :query, class: "form-control", placeholder: 'Album or Artist Name' %>
+            <div id='results'></div>
+        </div>
       </div>
       <div class="modal-footer">
-          <%= f.submit class: "btn btn-primary" %>
+          <%= f.submit "Search Spotify", class: "btn btn-primary" %>
         <% end %>
       </div>
     </div>

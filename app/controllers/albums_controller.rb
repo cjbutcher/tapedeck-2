@@ -23,7 +23,6 @@ class AlbumsController < ApplicationController
     tracks[:track_artists] = track_objects.map{ |obj| obj.artists.map(&:name).to_sentence }
     {
       tracks: tracks,
-      no_of_tracks: album.tracks.count,
       duration: 10000,
       album_name: album.name,
       album_art: album.images.first['url']

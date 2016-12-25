@@ -41,12 +41,13 @@
           <div class="modal-content">
             <div class="modal-header">
               <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span></button>
-              <h4 class="modal-title">Modal title</h4>
+              <h4 class="modal-title">Create a New Collection</h4>
             </div>
             <div class="modal-body">
-              <%= form_for Collection.new, url: collections_path do |f| %>
-                <%= f.label :title %>
-                <%= f.text_field :title %>
+              <div class='form-group'>
+                <%= form_for Collection.new, url: collections_path do |f| %>
+                  <%= f.text_field :title, class: "form-control", placeholder: 'Title' %>
+              </div>
             </div>
             <div class="modal-footer">
                 <%= f.submit class: "btn btn-primary" %>
