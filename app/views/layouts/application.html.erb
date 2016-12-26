@@ -25,13 +25,51 @@
               <%= image_tag 'icon.png', size: '70x70' %>
             </button>
             <ul class="dropdown-menu dropdown-menu-right" id='menu'>
-              <li>
+              <li class='menu-item'>
                 <span data-toggle="modal" data-target="#new-collection" class='clickable'>
-                  <%= fa_icon 'bolt' %> Create
+                  <div class='menu-item-icon'>
+                    <h3><%= fa_icon 'bolt' %></h3>
+                  </div>
+                  <div class='menu-item-text'>
+                    <h3>Create</h3>
+                  </div>
                 </span>
               </li>
-              <li><a href="#">Another action</a></li>
-              <li><a href="#">Something else here</a></li>
+              <li class='menu-item'>
+                <div class='menu-item-icon'>
+                  <h3><%= fa_icon 'random' %></h3>
+                </div>
+                <div class='menu-item-text'>
+                  <h3>Random</h3>
+                </div>
+              </li>
+              <li class='menu-item'>
+                <div class='menu-item-icon'>
+                  <h3><%= fa_icon 'question-circle-o' %></h3>
+                </div>
+                <div class='menu-item-text'>
+                  <h3>About</h3>
+                </div>
+              </li>
+              <% if user_signed_in? %>
+                <li class='menu-item'>
+                  <div class='menu-item-icon'>
+                    <h3><%= fa_icon 'sign-out' %></h3>
+                  </div>
+                  <div class='menu-item-text'>
+                    <h3>Sign Out</h3>
+                  </div>
+                </li>
+              <% else %>
+                <li class='menu-item'>
+                  <div class='menu-item-icon'>
+                    <h3><%= fa_icon 'sign-in' %></h3>
+                  </div>
+                  <div class='menu-item-text'>
+                    <h3>Sign In</h3>
+                  </div>
+                </li>
+              <% end %>
             </ul>
           </div>
         </div>

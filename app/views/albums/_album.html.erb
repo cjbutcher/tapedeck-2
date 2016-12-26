@@ -7,6 +7,13 @@
     <% end %>
     <%= link_to play_albums_path(album.spotify_id), remote: true do %>
       <div class='album-art'>
+        <div class='album-overlay'>
+          <div class='album-info'>
+            <span class='album-info album-name'><%= album.name %></span></br>
+            <span class='album-info album-artist'><%= album.artist %></span></br>
+            <span class='album-info album-year'><%= album.year %></span>
+          </div>
+        </div>
         <img class="img-thumbnail" src=<%= album.art %>>
       </div>
     <% end %>
