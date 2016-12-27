@@ -15,6 +15,7 @@ gem 'devise', '~> 4.2.0'
 gem 'omniauth', '~> 1.3.1'
 gem 'omniauth-facebook', '~> 4.0.0'
 gem 'figaro', '~> 1.1.1'
+gem 'rails-assets-bootstrap-toggle', source: 'https://rails-assets.org'
 
 group :development do
   gem 'listen', '~> 3.0.5'

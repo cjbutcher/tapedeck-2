@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap
+//= require bootstrap-toggle
 //= require turbolinks
 //= require jquery-ui.min
 //= require jplayer

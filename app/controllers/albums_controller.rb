@@ -9,9 +9,15 @@ class AlbumsController < ApplicationController
     @collection = current_user.collections.find(params[:collection_id])
     reject_request! unless @collection.user == current_user
     spotify_object = RSpotify::Album.find(params[:spotify_id])
-    Rails.logger.info(spotify_object.inspect)
     @album = @collection.albums.new(spotify_id: spotify_object.id, art: spotify_object.images.first['url'], name: spotify_object.name, artist: spotify_object.artists.first.name, year: get_release_year(spotify_object), position: (@collection.albums.count + 1))
     @album.save
+  end
+
+  def destroy
+    @album_id = params[:id]
+    @album = current_user.albums.find(@album_id)
+    reject_request! unless @album.collection.user == current_user
+    @album.destroy
   end
 
   private
@@ -36,7 +42,7 @@ class AlbumsController < ApplicationController
     elsif album.release_date_precision == "month"
       d = "#{album.release_date}-01"
     elsif album.release_date_precision == "day"
-      d = release_date
+      d = album.release_date
     end
     d.to_date.year
   end

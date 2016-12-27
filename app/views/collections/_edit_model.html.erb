@@ -13,12 +13,14 @@
         <div class='form-group'>
           <%= form_for @collection, url: collection_path(@collection), method: :patch, remote: true do |f| %>
             <%= f.text_field :title, class: "form-control", placeholder: 'Title' %>
-            <%= f.check_box :ordered %>
-            <%= f.label :ordered, "Order collection", { class: "checkbox inline" } %>
+            <div class='order-toggle'>
+              <%= f.check_box :ordered, 'data-toggle' => 'toggle', 'data-on' => 'Yes', 'data-off' => 'No', 'data-onstyle' => 'success', 'data-offstyle' => 'danger' %>
+              <%= f.label :ordered, "Order collection?", { class: "checkbox inline" } %>
+            </div>
         </div>
       </div>
       <div class="modal-footer">
-          <%= f.submit class: "btn btn-primary" %>
+          <%= f.submit 'Update', class: "btn btn-primary" %>
         <% end %>
       </div>
     </div>

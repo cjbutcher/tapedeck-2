@@ -12,7 +12,7 @@
       <div class="modal-body">
         <div class='form-group'>
           <%= form_for :spotify, url: search_spotify_path(@collection), remote: true, method: :get do |f| %>
-            <%= f.text_field :query, class: "form-control", placeholder: 'Album or Artist Name' %>
+            <%= f.text_field :query, class: "form-control", placeholder: 'Album or Artist Name', autofocus: true %>
             <div id='results'></div>
         </div>
       </div>

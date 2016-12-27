@@ -2,10 +2,9 @@
   <% if @albums.any? %>
     <% @albums.each do |album| %>
       <div class='nopadding col-xs-3'>
-        <%= link_to play_albums_path(album.spotify_id), remote: true do %>
+        <%= link_to collection_albums_path(@collection, spotify_id: album.spotify_id), method: :post, remote: true do %>
           <img class="album img-thumbnail" src=<%= album.art %>>
         <% end %>
-        <%= link_to 'Add', collection_albums_path(@collection, spotify_id: album.spotify_id), method: :post, remote: true %>
       </div>
     <% end %>
   <% else %>

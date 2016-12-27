@@ -1,6 +1,7 @@
 class User < ApplicationRecord
 
   has_many :collections
+  has_many :albums, through: :collections
 
   devise :database_authenticatable,
          :validatable, :omniauthable, omniauth_providers: [:facebook]

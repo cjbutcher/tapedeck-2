@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :spotify, only: [:index]
   get '/collections/:collection_id/spotify/search', to: 'spotify#search', as: :search_spotify
 
-  resources :albums, only: [] do
+  resources :albums, only: [:destroy] do
     collection do
       get '/:spotify_id/play', to: 'albums#play', as: 'play'
     end
