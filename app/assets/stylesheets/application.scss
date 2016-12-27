@@ -15,6 +15,11 @@
 @import "font-awesome";
 @import "bootstrap-toggle";
 
+a {
+  color:#000000 !important;
+  text-decoration: none !important;
+}
+
 html, body {
   height: 100%;
 }
@@ -269,4 +274,23 @@ html, body {
 
 .form-control:focus {
   border-color: black;
+}
+
+.album-preview {
+  padding: 0;
+  width: 100%;
+  height: auto;
+}
+
+.collection-preview {
+  background-color: black;
+}
+
+.collection-preview-title {
+  text-align: center;
+}
+
+.collection-preview-wrapper {
+  position: absolute;
+  top: 0px;
 }

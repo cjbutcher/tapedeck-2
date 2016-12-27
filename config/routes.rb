@@ -11,6 +11,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :users, only: [:show]
+
   resources :collections, only: [:show, :create, :update] do
     post '/reorder', to: 'collections#reorder', as: :reorder
     resources :albums, only: [:create]

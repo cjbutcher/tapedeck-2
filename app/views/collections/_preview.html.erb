@@ -1,0 +1,29 @@
+<% art = collection.albums.pluck(:art) %>
+<% if art.count >= 9 %>
+  <% 3.times do %>
+    <div class='row nopadding'>
+      <% 3.times do %>
+        <div class='col-xs-4 nopadding'>
+          <img class='album-preview' src=<%= art.delete_at(rand(art.length)) %>>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+<% elsif art.count >= 4 %>
+  <% 2.times do %>
+    <div class='row nopadding'>
+      <% 2.times do %>
+        <div class='col-xs-6 nopadding'>
+          <img class='album-preview' src=<%= art.delete_at(rand(art.length)) %>>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+<% elsif art.count >= 1 %>
+  <div class='row nopadding'>
+    <div class='col-xs-12 nopadding'>
+      <img class='album-preview' src=<%= art.delete_at(rand(art.length)) %>>
+    </div>
+  </div>
+<% end %>
+

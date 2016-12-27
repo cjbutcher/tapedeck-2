@@ -1,0 +1,23 @@
+<div class="row top-margin-lg bottom-margin-lg">
+  <div class="col-xs-3"></div>
+  <div class="col-xs-6">
+    <h1 class='center-align'><%= @user.username %></h1>
+  </div>
+  <div class="col-xs-3"></div>
+</div>
+<div class="row row-centered bottom-margin-lg">
+  <% @user.collections.each do |collection| %>
+    <div class='col-centered col-xs-6 col-sm-4'>
+      <div class='collection-preview-wrapper'>
+        <%= link_to collection_path(collection) do %>
+          <div class='collection-preview'>
+            <%= render 'collections/preview', collection: collection %>
+          </div>
+          <div class='collection-preview-title'>
+            <h3><%= collection.title %></h3>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>
