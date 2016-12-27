@@ -19,7 +19,7 @@
 //= require jplayer
 //= require_tree .
 
-$(document).ready(function(){
+$(document).on('turbolinks:load', function(){
   var prev = 0;
   var $window = $(window);
   var nav = $('.navbar-fixed-bottom');

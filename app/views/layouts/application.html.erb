@@ -35,14 +35,16 @@
                   </div>
                 </span>
               </li>
-              <li class='menu-item'>
-                <div class='menu-item-icon'>
-                  <h3><%= fa_icon 'random' %></h3>
-                </div>
-                <div class='menu-item-text'>
-                  <h3>Random</h3>
-                </div>
-              </li>
+              <%= link_to random_collections_path do %>
+                <li class='menu-item'>
+                  <div class='menu-item-icon'>
+                    <h3><%= fa_icon 'random' %></h3>
+                  </div>
+                  <div class='menu-item-text'>
+                    <h3>Random</h3>
+                  </div>
+                </li>
+              <% end %>
               <li class='menu-item'>
                 <div class='menu-item-icon'>
                   <h3><%= fa_icon 'question-circle-o' %></h3>

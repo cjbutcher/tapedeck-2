@@ -284,6 +284,7 @@ html, body {
 
 .collection-preview {
   background-color: black;
+  margin-bottom: 15px;
 }
 
 .collection-preview-title {
@@ -293,4 +294,8 @@ html, body {
 .collection-preview-wrapper {
   position: absolute;
   top: 0px;
+}
+
+.underline {
+  text-decoration: underline;
 }

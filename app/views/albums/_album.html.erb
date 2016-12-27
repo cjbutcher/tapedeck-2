@@ -15,11 +15,13 @@
             </div>
           </div>
         <% end %>
-        <div class='album-remove'>
-          <%= link_to album_path(album.id), remote: true, method: :delete do %>
-            <%= fa_icon 'times' %>
-          <% end %>
-        </div>
+        <% if current_page?(controller: 'collections', action: 'edit', id: collection.id) %>
+          <div class='album-remove'>
+            <%= link_to album_path(album.id), remote: true, method: :delete do %>
+              <%= fa_icon 'times' %>
+            <% end %>
+          </div>
+        <% end %>
         <img class="img-thumbnail" src=<%= album.art %>>
       </div>
   </div>

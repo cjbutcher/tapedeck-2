@@ -4,6 +4,15 @@ class CollectionsController < ApplicationController
     @collection = Collection.find(params[:id])
   end
 
+  def edit
+    @collection = Collection.find(params[:id])
+    reject_request! unless user_signed_in? && (@collection.user == current_user)
+  end
+
+  def random
+    redirect_to collection_path(Collection.all.sample)
+  end
+
   def create
     authenticate_user!
     @collection = current_user.collections.new(collection_params)
