@@ -5,19 +5,21 @@
   </div>
   <div class="col-xs-3"></div>
 </div>
-<div class="row row-centered bottom-margin-lg">
-  <% @user.collections.each do |collection| %>
-    <div class='col-centered col-xs-6 col-sm-4'>
-      <div class='collection-preview-wrapper'>
+<div id="user-collections" class='bottom-margin-lg'>
+  <div class='row row-centered'>
+    <% @user.collections.each do |collection| %>
+      <div class='collection-preview-wrapper col-centered col-xs-6 col-sm-3'>
         <%= link_to collection_path(collection) do %>
           <div class='collection-preview'>
             <%= render 'collections/preview', collection: collection %>
           </div>
-          <div class='collection-preview-title'>
-            <h3><%= collection.title %></h3>
-          </div>
         <% end %>
+        <div class='collection-preview-title'>
+          <%= link_to collection_path(collection) do %>
+            <h3><%= collection.title %></h3>
+          <% end %>
+        </div>
       </div>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
 </div>
