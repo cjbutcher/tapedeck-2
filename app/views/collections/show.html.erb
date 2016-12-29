@@ -2,7 +2,13 @@
   <div class="col-xs-3"></div>
   <div class="col-xs-6">
     <h1 class='center-align'><%= @collection.title %></h1>
-    <p class='center-align'>Curated by <span class='underline'><%= link_to @collection.user.username, user_path(@collection.user) %></span></p>
+    <p class='center-align'>
+      <% if user_signed_in? && current_user.can_edit_collection?(@collection) %>
+        Curated by <span class='underline'><%= link_to 'you', user_path(@collection.user) %></span> (<span class='underline'><%= link_to 'edit', edit_collection_path(@collection) %></span>)
+      <% else %>
+        Curated by <span class='underline'><%= link_to @collection.user.username, user_path(@collection.user) %></span>
+      <% end %>
+    </p>
   </div>
   <div class="col-xs-3"></div>
 </div>

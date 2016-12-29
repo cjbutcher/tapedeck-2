@@ -1,0 +1,20 @@
+<div id='about'>
+  <div class='row'>
+    <div class='col-xs-12 top-margin-lg'>
+      <h3>Create and share lists of your favourite records.</h3>
+      <h6>Tapedeck is free and <span class='underline'><a href='https://github.com/cjbutcher/tapedeck-2' target='_blank'>open-source!</a></span> 😄</h6>
+    </div>
+    <div class='col-xs-12'>
+      <%= button_to 'Show me an example', random_collections_path, class: 'btn btn-primary', id: 'show-me', method: :get %>
+    </div>
+    <div class='col-xs-12 bottom-margin-lg'>
+      <p><b>Shortcuts</b></p>
+      <p><b>r</b> random collection.</p>
+      <p><b>c</b> create a collection.</p>
+      <p><b>space</b> stop music.</p>
+      <p><b>]</b> next track.</p>
+      <p><b>[</b> previous track.</p></br>
+      <p>Click <%= image_tag 'icon', size: '20x20' %> in the bottom right for a menu.</p>
+    </div>
+  </div>
+</div>

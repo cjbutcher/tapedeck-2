@@ -12,14 +12,19 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require turbolinks
 //= require bootstrap
 //= require bootstrap-toggle
-//= require turbolinks
 //= require jquery-ui.min
 //= require jplayer
+//= require keymaster
 //= require_tree .
 
+
 $(document).on('turbolinks:load', function(){
+
+  // initialise auto-hiding navbar
+
   var prev = 0;
   var $window = $(window);
   var nav = $('.navbar-fixed-bottom');
@@ -28,5 +33,45 @@ $(document).on('turbolinks:load', function(){
     var scrollTop = $window.scrollTop();
     nav.toggleClass('navbar-slideout', scrollTop > prev);
     prev = scrollTop;
+  });
+
+
+  // autofocus inputs on modals
+
+  $('#new-collection').on('shown.bs.modal', function () {
+    $('#collection_title').focus();
+  });
+
+  $('#new-tape').on('shown.bs.modal', function () {
+    $('#spotify_query').focus();
+  });
+
+  $('#edit-collection').on('shown.bs.modal', function () {
+    $('#edit_collection_title').focus();
+  });
+
+  // bind shortcut keys
+
+  key.unbind('r, c, space');
+
+  key('r', function() {
+    $('#menu-item-random').trigger('click');
+  });
+
+  key('c', function() {
+    $('#new-collection').modal('toggle');
+  });
+
+  key('space', function() {
+    $('#stop_button').trigger('click');
+    return false;
+  });
+
+  key(']', function() {
+    $('#next_button').trigger('click');
+  });
+
+  key('[', function() {
+    $('#previous_button').trigger('click');
   });
 });
