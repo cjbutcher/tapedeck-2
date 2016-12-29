@@ -7,7 +7,7 @@
 </div>
 <div id="user-collections" class='bottom-margin-lg'>
   <div class='row row-centered'>
-    <% @user.collections.each do |collection| %>
+    <% @user.collections.order('created_at DESC').each do |collection| %>
       <div class='collection-preview-wrapper col-centered col-xs-6 col-sm-3'>
         <%= link_to collection_path(collection) do %>
           <div class='collection-preview'>
@@ -16,7 +16,7 @@
         <% end %>
         <div class='collection-preview-title'>
           <%= link_to collection_path(collection) do %>
-            <h3><%= collection.title %></h3>
+            <h4><%= collection.title %></h4>
           <% end %>
         </div>
       </div>

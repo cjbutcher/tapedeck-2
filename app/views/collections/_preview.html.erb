@@ -25,5 +25,11 @@
       <img class='album-preview' src=<%= art.delete_at(rand(art.length)) %>>
     </div>
   </div>
+<% elsif art.empty? %>
+  <div class='row nopadding'>
+    <div class='col-xs-12 nopadding'>
+      <%= image_tag 'empty-collection', class: 'album-preview' %>
+    </div>
+  </div>
 <% end %>
 
