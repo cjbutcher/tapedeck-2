@@ -12,7 +12,6 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
 //= require bootstrap
 //= require bootstrap-toggle
 //= require jquery-ui.min
@@ -21,7 +20,7 @@
 //= require_tree .
 
 
-$(document).on('turbolinks:load', function(){
+jQuery(function($) {
 
   // initialise auto-hiding navbar
 
@@ -74,4 +73,4 @@ $(document).on('turbolinks:load', function(){
   key('[', function() {
     $('#previous_button').trigger('click');
   });
-});
+})(jQuery);
