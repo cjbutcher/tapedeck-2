@@ -1,4 +1,4 @@
-$('#collection').append("<%= j render @album, collection: @collection %>");
+$('#collection').append("<%= j render @album, collection: @collection, edit: true %>");
 $('#new-tape').modal('toggle');
 
 $('#reorder-script').replaceWith("<%= j render 'collections/reorder_script' %>");

@@ -68,23 +68,27 @@
                 </li>
               <% end %>
               <% if user_signed_in? %>
-                <li id='menu-item-sign-out' class='menu-item'>
-                  <div class='menu-item-icon'>
-                    <h3><%= fa_icon 'sign-out' %></h3>
-                  </div>
-                  <div class='menu-item-text'>
-                    <h3>Sign Out</h3>
-                  </div>
-                </li>
+                <%= link_to destroy_user_session_path, method: :delete do %>
+                  <li id='menu-item-sign-out' class='menu-item'>
+                    <div class='menu-item-icon'>
+                      <h3><%= fa_icon 'sign-out' %></h3>
+                    </div>
+                    <div class='menu-item-text'>
+                      <h3>Sign Out</h3>
+                    </div>
+                  </li>
+                <% end %>
               <% else %>
-                <li id='menu-item-sign-in' class='menu-item'>
-                  <div class='menu-item-icon'>
-                    <h3><%= fa_icon 'sign-in' %></h3>
-                  </div>
-                  <div class='menu-item-text'>
-                    <h3>Sign In</h3>
-                  </div>
-                </li>
+                <%= link_to new_user_session_path do %>
+                  <li id='menu-item-sign-in' class='menu-item'>
+                    <div class='menu-item-icon'>
+                      <h3><%= fa_icon 'sign-in' %></h3>
+                    </div>
+                    <div class='menu-item-text'>
+                      <h3>Sign In</h3>
+                    </div>
+                  </li>
+                <% end %>
               <% end %>
             </ul>
           </div>
