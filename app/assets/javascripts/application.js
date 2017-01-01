@@ -12,7 +12,8 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require bootstrap
+//= require tether
+//= require bootstrap-sprockets
 //= require bootstrap-toggle
 //= require jquery-ui.min
 //= require jplayer
@@ -20,7 +21,7 @@
 //= require_tree .
 
 
-jQuery(function($) {
+window.onload = function() {
 
   // initialise auto-hiding navbar
 
@@ -73,4 +74,5 @@ jQuery(function($) {
   key('[', function() {
     $('#previous_button').trigger('click');
   });
-})(jQuery);
+
+};

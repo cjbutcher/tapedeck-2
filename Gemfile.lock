@@ -138,6 +138,7 @@ GEM
     rails-assets-jplayer (2.9.2)
       rails-assets-jquery (>= 1.7.2)
     rails-assets-jquery (3.1.1)
+    rails-assets-tether (1.1.1)
     rails-dom-testing (2.0.1)
       activesupport (>= 4.2.0, < 6.0)
       nokogiri (~> 1.6.0)
@@ -218,6 +219,7 @@ DEPENDENCIES
   rails (~> 5.0.1)
   rails-assets-bootstrap-toggle!
   rails-assets-jplayer!
+  rails-assets-tether (~> 1.1.0)
   rspotify (~> 1.19.0)
   sass-rails (~> 5.0.6)
   spring
@@ -225,6 +227,9 @@ DEPENDENCIES
   turbolinks (~> 5.0.0)
   tzinfo-data
   uglifier (~> 3.0.4)
+
+RUBY VERSION
+   ruby 2.3.0p0
 
 BUNDLED WITH
    1.12.5
