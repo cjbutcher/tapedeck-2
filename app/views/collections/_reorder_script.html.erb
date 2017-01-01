@@ -8,6 +8,14 @@
     }
   });
 
+  $(".order").hover(
+    function() {
+      $(this).css("cursor", "move");
+    }, function() {
+      $(this).css("cursor", "");
+    }
+  );
+
   function sendOrderToServer() {
     var order = $("#collection").sortable("serialize");
     var url = $("#collection").data("reorder-path");

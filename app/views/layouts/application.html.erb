@@ -27,14 +27,12 @@
             <ul class="dropdown-menu dropdown-menu-right" id='menu'>
               <%= link_to collections_path, method: :post do %>
                 <li id='menu-item-create' class='menu-item'>
-                  <span data-toggle="modal" data-target="#new-collection" class='clickable'>
-                    <div class='menu-item-icon'>
-                      <h3><%= fa_icon 'bolt' %></h3>
-                    </div>
-                    <div class='menu-item-text'>
-                      <h3>Create</h3>
-                    </div>
-                  </span>
+                  <div class='menu-item-icon'>
+                    <h3><%= fa_icon 'bolt' %></h3>
+                  </div>
+                  <div class='menu-item-text'>
+                    <h3>Create</h3>
+                  </div>
                 </li>
               <% end %>
               <% if user_signed_in? %>

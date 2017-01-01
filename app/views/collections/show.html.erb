@@ -10,8 +10,16 @@
       <% end %>
     </p>
   </div>
-  <div class="col-xs-3"></div>
+  <div class="col-xs-1"></div>
+  <div class="col-xs-1 center-align">
+    <span data-toggle="modal" data-target="#share-collection" class='clickable'>
+      <%= fa_icon 'bullhorn' %></br>Share
+    </span>
+  </div>
+  <div class="col-xs-1"></div>
 </div>
 <div id='collection' class="row row-centered bottom-margin-lg" data-reorder-path="<%= collection_reorder_path(@collection) %>">
   <%= render @collection.albums.order('position'), collection: @collection %>
 </div>
+
+<%= render 'collections/share_model' %>

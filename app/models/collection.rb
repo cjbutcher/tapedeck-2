@@ -3,6 +3,7 @@ class Collection < ApplicationRecord
   has_many :albums
 
   after_initialize do
-    self.title ||= 'New Collection'
+    self.title ||= 'My New Tapedeck'
   end
+
 end
