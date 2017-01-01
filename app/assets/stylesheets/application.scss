@@ -287,7 +287,7 @@ html, body {
 }
 
 .collection-preview-wrapper {
-  margin-bottom: 80px;
+  margin-bottom: 90px;
 }
 
 .collection-preview {
@@ -299,7 +299,7 @@ html, body {
 
 .collection-preview-title {
   position: absolute;
-  height: 50px;
+  height: 60px;
   overflow: hidden;
 }
 
@@ -333,4 +333,12 @@ html, body {
 
 .button-icon {
   float: left;
+}
+
+.delete-collection-button {
+  float: left;
+}
+
+.update-collection-button {
+  float: right;
 }

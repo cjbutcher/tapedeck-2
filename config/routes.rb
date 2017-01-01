@@ -13,7 +13,7 @@ Rails.application.routes.draw do
 
   resources :users, only: [:show]
 
-  resources :collections, only: [:show, :create, :edit, :update] do
+  resources :collections, only: [:show, :create, :edit, :update, :destroy] do
     collection do
       get :random
     end

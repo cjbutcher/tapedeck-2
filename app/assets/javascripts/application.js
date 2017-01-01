@@ -58,7 +58,7 @@ jQuery(function($) {
   });
 
   key('c', function() {
-    $('#new-collection').modal('toggle');
+    $('#menu-item-create').trigger('click');
   });
 
   key('space', function() {

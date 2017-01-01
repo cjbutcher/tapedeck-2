@@ -27,6 +27,12 @@ class CollectionsController < ApplicationController
     redirect_to collection_path(@collection)
   end
 
+  def destroy
+    @collection = current_user.collections.find(params[:id])
+    @collection.destroy
+    redirect_to user_path(current_user)
+  end
+
   def reorder
     position = 1
     collection = current_user.collections.find(params[:collection_id])

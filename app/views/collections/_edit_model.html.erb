@@ -11,7 +11,7 @@
       </div>
       <div class="modal-body">
         <div class='form-group'>
-          <%= form_for @collection, url: collection_path(@collection), method: :patch, remote: true do |f| %>
+          <%= form_for @collection, url: collection_path(@collection), method: :patch do |f| %>
             <%= f.text_field :title, class: "form-control", placeholder: 'Title', id: 'edit_collection_title' %>
             <div class='order-toggle'>
               <%= f.check_box :ordered, 'data-toggle' => 'toggle', 'data-on' => 'Yes', 'data-off' => 'No', 'data-onstyle' => 'success', 'data-offstyle' => 'danger' %>
@@ -20,8 +20,9 @@
         </div>
       </div>
       <div class="modal-footer">
-          <%= f.submit 'Update', class: "btn btn-primary" %>
+          <%= f.submit 'Update', class: "btn btn-primary update-collection-button" %>
         <% end %>
+        <%= button_to 'Delete Collection', collection_path(@collection), method: :delete, class: 'btn btn-danger delete-collection-button' %>
       </div>
     </div>
   </div>

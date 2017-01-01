@@ -19,11 +19,14 @@
             <%= link_to collection_path(collection) do %>
               <h4><%= collection.title %></h4>
             <% end %>
+            <% if collection.albums.empty? %>
+              (<%= link_to 'delete', collection_path(collection), method: :delete %>)
+            <% end %>
           </div>
         </div>
       <% end %>
     <% else %>
-      <h3>You have no collections yet. <%= link_to 'Create one', new_collection_path, class: 'underline' %>.</h3>
+      <h3>You have no collections yet. <%= link_to 'Create one', collections_path, class: 'underline', method: :post %>.</h3>
     <% end %>
   </div>
 </div>

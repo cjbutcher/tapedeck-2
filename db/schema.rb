@@ -31,15 +31,16 @@ ActiveRecord::Schema.define(version: 20161225120221) do
 
   create_table "collections", force: :cascade do |t|
     t.string   "title"
-    t.boolean  "ordered"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.boolean  "ordered",    default: true
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
     t.integer  "user_id"
   end
 
   create_table "sections", force: :cascade do |t|
     t.integer  "collection_id"
     t.string   "title"
+    t.integer  "position"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
     t.index ["collection_id"], name: "index_sections_on_collection_id", using: :btree
@@ -53,7 +54,7 @@ ActiveRecord::Schema.define(version: 20161225120221) do
     t.string   "username"
     t.datetime "created_at",                      null: false
     t.datetime "updated_at",                      null: false
-    t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
+    t.index ["uid"], name: "index_users_on_uid", using: :btree
   end
 
 end
