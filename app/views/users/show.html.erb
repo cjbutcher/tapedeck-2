@@ -7,19 +7,23 @@
 </div>
 <div id="user-collections" class='bottom-margin-lg'>
   <div class='row row-centered'>
-    <% @user.collections.order('created_at DESC').each do |collection| %>
-      <div class='collection-preview-wrapper col-centered col-xs-6 col-sm-3'>
-        <%= link_to collection_path(collection) do %>
-          <div class='collection-preview'>
-            <%= render 'collections/preview', collection: collection %>
-          </div>
-        <% end %>
-        <div class='collection-preview-title'>
+    <% if @user.collections.any? %>
+      <% @user.collections.order('created_at DESC').each do |collection| %>
+        <div class='collection-preview-wrapper col-centered col-xs-6 col-sm-3'>
           <%= link_to collection_path(collection) do %>
-            <h4><%= collection.title %></h4>
+            <div class='collection-preview'>
+              <%= render 'collections/preview', collection: collection %>
+            </div>
           <% end %>
+          <div class='collection-preview-title'>
+            <%= link_to collection_path(collection) do %>
+              <h4><%= collection.title %></h4>
+            <% end %>
+          </div>
         </div>
-      </div>
+      <% end %>
+    <% else %>
+      <h3>You have no collections yet. <%= link_to 'Create one', new_collection_path, class: 'underline' %>.</h3>
     <% end %>
   </div>
 </div>

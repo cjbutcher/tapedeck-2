@@ -25,16 +25,18 @@
               <%= image_tag 'icon.png', size: '70x70' %>
             </button>
             <ul class="dropdown-menu dropdown-menu-right" id='menu'>
-              <li id='menu-item-create' class='menu-item'>
-                <span data-toggle="modal" data-target="#new-collection" class='clickable'>
-                  <div class='menu-item-icon'>
-                    <h3><%= fa_icon 'bolt' %></h3>
-                  </div>
-                  <div class='menu-item-text'>
-                    <h3>Create</h3>
-                  </div>
-                </span>
-              </li>
+              <%= link_to collections_path, method: :post do %>
+                <li id='menu-item-create' class='menu-item'>
+                  <span data-toggle="modal" data-target="#new-collection" class='clickable'>
+                    <div class='menu-item-icon'>
+                      <h3><%= fa_icon 'bolt' %></h3>
+                    </div>
+                    <div class='menu-item-text'>
+                      <h3>Create</h3>
+                    </div>
+                  </span>
+                </li>
+              <% end %>
               <% if user_signed_in? %>
                 <%= link_to user_path(current_user) do %>
                   <li id='menu-item-profile' class='menu-item'>
@@ -94,26 +96,6 @@
           </div>
         </div>
       </nav>
-      <div class="modal fade" id="new-collection">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span></button>
-              <h4 class="modal-title">Create a New Collection</h4>
-            </div>
-            <div class="modal-body">
-              <div class='form-group'>
-                <%= form_for Collection.new, url: collections_path do |f| %>
-                  <%= f.text_field :title, class: "form-control", placeholder: 'Title' %>
-              </div>
-            </div>
-            <div class="modal-footer">
-                <%= f.submit class: "btn btn-primary" %>
-              <% end %>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
   </body>
 </html>

@@ -15,9 +15,13 @@
 @import "font-awesome";
 @import "bootstrap-toggle";
 
+.underline {
+  text-decoration: underline;
+}
+
 a {
   color:#000000 !important;
-  text-decoration: none !important;
+  text-decoration: none;
 }
 
 html, body {
@@ -299,14 +303,34 @@ html, body {
   overflow: hidden;
 }
 
-.underline {
-  text-decoration: underline;
-}
-
 #about, #sign-in {
   text-align: center;
 }
 
-#show-me-button, .sign-in-button {
+#show-me-button {
   margin: 20px 0px 40px 0px;
+}
+
+.sign-in-button {
+  margin: 20px 0px 0px 0px;
+  width: 250px;
+  border: none;
+}
+
+#sign-in-buttons {
+  margin-top: 40px;
+}
+
+.facebook {
+  background-color: #3b5998;
+  color: white;
+}
+
+.twitter {
+  background-color: #1da1f2;
+  color: white;
+}
+
+.button-icon {
+  float: left;
 }

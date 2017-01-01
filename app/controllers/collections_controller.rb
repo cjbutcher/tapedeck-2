@@ -15,7 +15,7 @@ class CollectionsController < ApplicationController
 
   def create
     authenticate_user!
-    @collection = current_user.collections.new(collection_params)
+    @collection = current_user.collections.new
     if @collection.save
       redirect_to edit_collection_path(@collection)
     end

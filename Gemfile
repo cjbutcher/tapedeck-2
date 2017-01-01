@@ -14,6 +14,7 @@ gem 'font-awesome-rails', '~> 4.7.0.1'
 gem 'devise', '~> 4.2.0'
 gem 'omniauth', '~> 1.3.1'
 gem 'omniauth-facebook', '~> 4.0.0'
+gem 'omniauth-twitter', '~> 1.2.1'
 gem 'figaro', '~> 1.1.1'
 gem 'rails-assets-bootstrap-toggle', source: 'https://rails-assets.org'
 

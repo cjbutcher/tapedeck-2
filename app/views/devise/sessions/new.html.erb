@@ -4,10 +4,12 @@
       <h3>Sign In.</h3>
       <h6>Tapedeck is 100% free. We just use accounts to know which collections are yours to edit.</h6>
     </div>
-    <div class='col-xs-12'>
+    <div id='sign-in-buttons' class='col-xs-12'>
       <% if devise_mapping.omniauthable? %>
         <% resource_class.omniauth_providers.each do |provider| %>
-          <%= button_to "Sign in with #{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, provider), class: 'btn btn-primary sign-in-button', method: :get %>
+          <%= button_to omniauth_authorize_path(resource_name, provider), class: "btn btn-primary sign-in-button #{provider}", method: :get do %>
+              <div class='button-icon'><%= fa_icon "#{provider}" %></div>  <%= "Sign in with #{OmniAuth::Utils.camelize(provider)}" %>
+          <% end %>
         <% end %>
       <% end %>
     </div>
