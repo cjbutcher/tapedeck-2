@@ -6,4 +6,6 @@ class Collection < ApplicationRecord
     self.title ||= 'My New Tapedeck'
   end
 
+  validates :title, presence: true
+
 end

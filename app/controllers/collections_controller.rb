@@ -10,7 +10,8 @@ class CollectionsController < ApplicationController
   end
 
   def random
-    redirect_to collection_path(Collection.all.sample)
+    collection = Album.all.sample.collection
+    redirect_to collection_path(collection)
   end
 
   def create
