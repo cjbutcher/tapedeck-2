@@ -1,4 +1,4 @@
-<% art = collection.albums.pluck(:art) %>
+<% art = collection.albums.where('art IS NOT NULL').pluck(:art) %>
 <% if art.count >= 9 %>
   <% 3.times do %>
     <div class='row nopadding'>
