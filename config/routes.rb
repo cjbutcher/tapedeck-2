@@ -18,7 +18,11 @@ Rails.application.routes.draw do
       get :random
     end
     post '/reorder', to: 'collections#reorder', as: :reorder
-    resources :albums, only: [:create]
+    resources :albums, only: [:create] do
+      collection do
+        post :create_custom
+      end
+    end
   end
 
   resources :welcome, only: [:index]

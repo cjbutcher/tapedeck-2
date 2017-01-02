@@ -85,7 +85,7 @@ html, body {
 
 .album-art {
   margin-top: 3px;
-  position: relative
+  position: relative;
 }
 
 .center-align {
@@ -334,7 +334,7 @@ html, body {
   float: left;
 }
 
-.delete-collection-button {
+.floated-left {
   float: left;
 }
 
@@ -351,4 +351,18 @@ html, body {
   text-align: center;
   border-radius: 3px;
   margin-bottom: 20px;
+}
+
+.hide-this {
+  display: none;
+}
+
+.custom-album-info {
+  position: absolute;
+  padding-top: 10px;
+  padding-left: 10px;
+}
+
+.remove-custom {
+  color: black;
 }

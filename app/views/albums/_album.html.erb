@@ -5,24 +5,33 @@
         <h3><%= album.position %></h3>
       </div>
     <% end %>
-      <div class='album-art'>
+    <div class='album-art'>
+      <% unless album.custom? %>
         <%= link_to play_albums_path(album.spotify_id), remote: true do %>
-          <div class='album-overlay'>
-            <div class='album-info'>
-              <span class='album-name'><%= album.name %></span></br>
-              <span class='album-artist'><%= album.artist %></span></br>
-              <span class='album-year'><%= album.year %></span>
-            </div>
-          </div>
+          <%= render 'albums/album_overlay', album: album %>
         <% end %>
-        <% if defined?(edit) %>
-          <div class='album-remove'>
-            <%= link_to album_path(album.id), remote: true, method: :delete do %>
+      <% end %>
+      <% if defined?(edit) %>
+        <div class='album-remove'>
+          <%= link_to album_path(album.id), remote: true, method: :delete do %>
+            <% if album.custom? %>
+              <%= fa_icon 'times', class: 'remove-custom' %>
+            <% else %>
               <%= fa_icon 'times' %>
             <% end %>
-          </div>
-        <% end %>
+          <% end %>
+        </div>
+      <% end %>
+      <% if album.custom? %>
+        <div class='custom-album-info'>
+          <h3><%= album.name %></h3>
+          <h5><%= album.artist %></h5>
+          <p><%= album.year %></p>
+        </div>
+        <%= image_tag 'custom-album-background.png', class: 'img-thumbnail' %>
+      <% else %>
         <img class="img-thumbnail" src=<%= album.art %>>
-      </div>
+      <% end %>
+    </div>
   </div>
 </div>

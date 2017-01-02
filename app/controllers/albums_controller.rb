@@ -13,6 +13,15 @@ class AlbumsController < ApplicationController
     @album.save
   end
 
+  def create_custom
+    @collection = current_user.collections.find(params[:collection_id])
+    reject_request! unless @collection.user == current_user
+    @album = @collection.albums.new(custom: true, position: (@collection.albums.count + 1))
+    @album.assign_attributes(custom_album_params)
+    @album.save
+    render :create
+  end
+
   def destroy
     @album_id = params[:id]
     @album = current_user.albums.find(@album_id)
@@ -45,6 +54,10 @@ class AlbumsController < ApplicationController
       d = album.release_date
     end
     d.to_date.year
+  end
+
+  def custom_album_params
+    params.require(:album).permit(:name, :artist, :year)
   end
 
 end

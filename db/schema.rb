@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161225120221) do
+ActiveRecord::Schema.define(version: 20170102132018) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,8 +24,9 @@ ActiveRecord::Schema.define(version: 20161225120221) do
     t.integer  "year"
     t.string   "art"
     t.integer  "position"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+    t.boolean  "custom",        default: false
     t.index ["collection_id"], name: "index_albums_on_collection_id", using: :btree
   end
 

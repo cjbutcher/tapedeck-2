@@ -5,17 +5,47 @@
         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title">Add a Tape</h4>
       </div>
-      <div class="modal-body">
-        <div class='form-group'>
-          <%= form_for :spotify, url: search_spotify_path(@collection), remote: true, method: :get do |f| %>
-            <%= f.text_field :query, class: "form-control", placeholder: 'Album or Artist Name' %>
-            <div id='results'></div>
+      <span id='search-spotify'>
+        <div class="modal-body">
+          <div class='form-group search-spotify'>
+            <%= form_for :spotify, url: search_spotify_path(@collection), remote: true, method: :get do |f| %>
+              <%= f.text_field :query, class: "form-control", placeholder: 'Album or Artist Name' %>
+              <div id='results'></div>
+          </div>
         </div>
-      </div>
-      <div class="modal-footer">
-          <%= f.submit "Search Spotify", class: "btn btn-primary" %>
-        <% end %>
-      </div>
+        <div class="modal-footer">
+            <%= f.submit "Search Spotify", class: "btn btn-primary" %>
+          <% end %>
+          <%= button_tag 'Add Album not on Spotify', class: 'btn btn-primary floated-left', id: 'add-custom-album-button' %>
+        </div>
+      </span>
+      <span id='add-custom-album' class='hide-this'>
+        <div class="modal-body">
+          <div class='form-group search-spotify'>
+            <%= form_for @collection.albums.new, url: create_custom_collection_albums_path(@collection), remote: true, method: :post do |f| %>
+              <%= f.text_field :name, class: "form-control", placeholder: 'Album Name' %>
+              <%= f.text_field :artist, class: "form-control", placeholder: 'Artist Name' %>
+              <%= f.select :year, options_for_select(1920..(Date.today.year + 1), Date.today.year), {}, class: "form-control", placeholder: 'Year of Release' %>
+          </div>
+        </div>
+        <div class="modal-footer">
+            <%= f.submit "Create Album", class: "btn btn-primary" %>
+          <% end %>
+          <%= button_tag 'Add Album from Spotify', class: 'btn btn-primary floated-left', id: 'search-spotify-button' %>
+        </div>
+      </span>
     </div>
   </div>
 </div>
+
+<script>
+  $('#add-custom-album-button').on('click', function() {
+    $('#search-spotify').addClass('hide-this');
+    $('#add-custom-album').removeClass('hide-this');
+  });
+
+  $('#search-spotify-button').on('click', function() {
+    $('#add-custom-album').addClass('hide-this');
+    $('#search-spotify').removeClass('hide-this');
+  });
+</script>
